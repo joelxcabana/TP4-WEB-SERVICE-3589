@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-9 text-center mt-3">
+        <form action="">
+            <div class="form-group row">
+                <label for="categoria" class="col-md-2 col-sm-6 ">Categor&iacute;a</label>
+                <select name="categoria" id="categoria" class="form-control col-md-2 col-sm-6" [(ngModel)]="categoria">
+                    <option value="soccer">Futbol</option>
+                    <option value="tennis">Tenis</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary" (click)="cargarNoticias()">Mostrar Noticias</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+<!-- Cards -->
+<div class="row">
+    <content class="col-md-9">
+        <div class="row row-cols-1 row-cols-md-3">
+
+            <div class="col-md-6 col-sm-6" *ngFor="let item of vector_noticia">
+                <div class="card"></div>
+                <img src="{{item.img}}" alt="Responsive image" class="card-img-top img-fluid ">
+                <div class="card-body text-formato">
+                    <!--<p class="card-text tag">CORONAVIRUS - ESPANA</p>-->
+                    <h5 class="card-title titulo-noticia">{{item.tit}}</h5>
+                    <p>{{item.des}}</p>
+                </div>
+            </div>
+        </div>
+    </content>
+    <!--Banner Publicidad-->
+    <aside class="col-md-3 d-none d-md-block">
+        <img src="../../../assets/img/coca-cola.jpg" alt="" class="img-fluid img-banner">
+    </aside>
+</div>

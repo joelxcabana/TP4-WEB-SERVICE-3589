@@ -1,0 +1,62 @@
+<!-- contenido -->
+<div class="row align-content-md-center mt-4">
+    <div class="col-md-4 col-6 mt-4" *ngFor="let item of listaSignos">
+        <div class="media">
+            <img src="" class="mr-1 imag-signos" alt="...">
+            <div class="media-body">
+                <div class="alert alert-success fondo-horoscopo" role="alert">
+                    {{item.name}} {{item.start_date}}-{{item. end_date}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="input-group mb-3 col-md-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Seleciona una fecha </span>
+            </div>
+            <input type="date" name="fecha" class="form-control" [(ngModel)]="fecha">
+        </div>
+        <div class="input-group mb-3 col-md-5">
+            <button type="button" class="btn btn-success" (click)="buscarSigno()">Buscar Signo</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card border-none">
+            <div class="card-header fondo-horoscopo">
+                <h3>Aries - Dia</h3>
+            </div>
+            <div class="card-body ">
+                <div class="media">
+                    <div class="media-body  ">
+                        <h5 class="mt-0 mb-1 ">Aries</h5>
+                        Pelearte con familiares te haría recortar el apoyo que necesitas en estos momentos de cierta paralización. Cierras el día calmando los ánimos y buscando el diálogo; habrá mutua comprensión.
+                    </div>
+                    <img src="img/horoscopo/aries-.png" class="ml-3 imag-signos" alt="...">
+                </div>
+            </div>
+        </div>
+        <div class="card border-none">
+            <div class="card-header fondo-horoscopo">
+                <h3>Aries - Mes</h3>
+            </div>
+            <div class="card-body ">
+                <div class="media">
+                    <div class="media-body  ">
+                        <h5 class="mt-0 mb-1 ">Aries</h5>
+                        Pelearte con familiares te haría recortar el apoyo que necesitas en estos momentos de cierta paralización. Cierras el día calmando los ánimos y buscando el diálogo; habrá mutua comprensión.
+                    </div>
+                    <img src="img/horoscopo/aries-.png" class="ml-3 imag-signos" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row justify-content-center mt-3 mb-3 ">
+        <div class="col-md-4 col-5">
+            <input type="text" class="form-control" [(ngModel)]="palabra" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Buscar producto, marca y mas..">
+        </div>
+        <div class="col-md-3  col-5">
+            <button type="button" class="btn-primary btn col-6" (click)="cargarProductos()">  Buscar </button>
+        </div>
+    </div>
+    <div class="row text-left border-top">
+        <div class="col-md-4 col-5">
+            <label for="">Categoria :</label>
+            <select name="categoria" id="categoria" class="form-control" [(ngModel)]="categoria" (ngModelChange)="cargarProductosPorCategoria()">
+                <option hidden selected>Selecciona una opción</option>
+                <option value="MLA5725">Accesorios para Vehículos</option>
+                <option value="MLA1000">Electrónica, Audio y Video"</option>
+                <option value="MLA1648">Computación</option>
+                <option value="MLA1574">Hogar, Muebles y Jardín"</option>
+                <option value="MLA1368">Arte, Librería y Mercería</option>
+                <option value="MLA1743">Autos, Motos y Otros</option>
+                <option value="MLA1051">Celulares y Teléfonos</option>
+                <option value="MLA1403">Alimentos y Bebidas</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-2 border-bottom " *ngFor="let item of listaProductos ">
+        <div class="col-md-3 text-center ">
+            <img src="{{item.thumbnail}} " alt=" " class="img-fluid img-tam ">
+        </div>
+        <div class="col-md-9 ">
+            <div class="row ">
+                <h4>{{item.title}}</h4>
+            </div>
+            <div class="row ">
+                <h5>
+                    {{item.price | currency}}
+                </h5>
+            </div>
+            <div class="row ">
+                <span> {{item.address.state_name}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
