@@ -12,6 +12,9 @@ nombrePais:string;
 pais: Pais;
 listaPaises:Array<Pais>;
 
+opciones:string;
+
+
 
   constructor(private pais_service:PaisService) {
    this.pais = new Pais();
@@ -27,8 +30,6 @@ listaPaises:Array<Pais>;
   }
 
   }
-
-
 
    private cargarPais(){
     this.pais_service.getPais(this.nombrePais).subscribe( 

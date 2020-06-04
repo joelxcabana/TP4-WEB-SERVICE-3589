@@ -14,12 +14,13 @@ export class DivisasComponent implements OnInit {
   a:string;
   cantidad:number;
   resultado:string;
+ 
+  r:string;
 
   listaConversion: Array<Convertidor>;
   divisa:Convertidor;
 
   constructor(private convertidor_servicio:ConvertidorService) {
-
      this.listaConversion = new Array<Convertidor>();
      this.divisa = new Convertidor();
      this.tablaConversion();
@@ -34,46 +35,55 @@ export class DivisasComponent implements OnInit {
       (result) => {         
         this.resultado=result['result'];
         console.log(this.resultado);
+        
        }, 
        error => { alert("Error en la petición"); } )
   }
 
 
   public tablaConversion(){
-    this.cargar();
-    for(var i=0;i<this.listaConversion.length; i++){
+       console.log("entro al metodo: ");
+       this.cargar();
+     for(var i=0; i<this.listaConversion.length;i++){
       this.convertidor_servicio.getCambio(this.listaConversion[i].fromtype,this.listaConversion[i].totype,this.listaConversion[i].fromvalue).subscribe( 
-        (result) => {    
-          console.log(result['result']);     
-          this.listaConversion[i].result = result['result'];
-          this.listaConversion[i].result = 77777;
-          console.log(this.listaConversion[i].result);
+        (result) => {         
+          this.resultado=result['result'];
+          console.log(this.resultado);
          }, 
          error => { alert("Error en la petición"); } )
+         
+          //error sale variable indefinida dde this resultado??????????
+          console.log(this.resultado);
+          this.listaConversion[i].result = this.resultado;
+          console.log("FINAL"+this.listaConversion[i].result);
+      }
 
-    }
   }
-
-
 
   private cargar(){
      this.divisa = new Convertidor();
 
      this.divisa.fromtype="ARS";
+     this.divisa.imgfrom = "arg.png";
      this.divisa.totype="USD";
      this.divisa.fromvalue=1;
+     this.divisa.imgto = "usa.png";
+     this.divisa.result = "dgfdgd";
     
      this.listaConversion.push(this.divisa);
 
      this.divisa = new Convertidor();
 
      this.divisa.fromtype="BTC";
+     this.divisa.imgfrom = "btc.png";
      this.divisa.totype="EUR";
-     this.divisa.fromvalue=1;
+     this.divisa.imgto = "euro.png";
+     this.divisa.fromvalue= 1;
+     this.divisa.result= "dfgdfg";
     
      this.listaConversion.push(this.divisa);
 
-
+/*
      this.divisa = new Convertidor();
 
      this.divisa.fromtype="BRL";
@@ -84,7 +94,7 @@ export class DivisasComponent implements OnInit {
      
 
      this.divisa = new Convertidor();
-
+*/
 
   }
 

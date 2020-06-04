@@ -24,9 +24,24 @@ signoAsignado:string;
      this.cargarSignos();
   }
 
+  //busca signo por una fecha pero no recibe el dato
   public buscarSigno(){
     console.log(this.fecha);
     this.signo_Service.getSignosByDate(this.fecha).subscribe( 
+      (result) => {
+          console.log(JSON.parse(result));
+         //this.signoAsignado = result;
+        // console.log(this.signoAsignado);
+      }, 
+      error => { alert("Error en la petición");console.log(error) } )
+      
+  }
+
+
+  ///service consume otra api pero no recupera los datos
+ public buscarSignoNuevo(){
+    console.log(this.fecha);
+    this.signo_Service.getSigno().subscribe( 
       (result) => {
           console.log(result);
          //this.signoAsignado = result;
@@ -35,6 +50,7 @@ signoAsignado:string;
       error => { alert("Error en la petición");console.log(error) } )
       
   }
+
 
 
   public cargarSignos(){

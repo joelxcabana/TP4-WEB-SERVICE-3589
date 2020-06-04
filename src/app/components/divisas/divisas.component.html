@@ -1,79 +1,78 @@
 <div class="row mt-5">
-    <content class="col-md-8 col-sm-12">
-        <table class="table table-striped" [mfData]="listaConversion" #mf="mfDataTable" [mfRowsOnPage]="25">
+
+    <content class="col-md-8 col-sm-12 ">
+        <table class="table table-striped " [mfData]="listaConversion " #mf="mfDataTable" [mfRowsOnPage]="25 ">
             <thead>
                 <tr>
-                    <th style="width: 20%">
-                        <mfDefaultSorter by="name">De</mfDefaultSorter>
+                    <th style="width: 20% ">
+                        <mfDefaultSorter by="name "></mfDefaultSorter>
                     </th>
-                    <th style="width: 50%">
-                        <mfDefaultSorter by="email">A</mfDefaultSorter>
+                    <th style="width: 50% ">
+                        <mfDefaultSorter by="email ">EQUIVALENCIAS</mfDefaultSorter>
                     </th>
-                    <th style="width: 10%">
-                        <mfDefaultSorter by="age">Resultado</mfDefaultSorter>
+                    <th style="width: 10% ">
+                        <mfDefaultSorter by="age "></mfDefaultSorter>
                     </th>
 
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of mf.data">
-                    <td>{{item.fromvalue}} {{item.fromtype}}</td>
-                    <td>{{item.totype}}</td>
+                <tr *ngFor="let item of mf.data ">
+                    <td><img [src]="'../../../assets/img/'+item.imgfrom" class="img-fluid imgd"> {{item.fromvalue}} {{item.fromtype}}</td>
+                    <td><img [src]="'../../../assets/img/'+item.imgto" class="img-fluid imgd"> {{item.result}} {{item.totype}}</td>
                     <td></td>
-                    <td>{{item.result}}</td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4">
-                        <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+                    <td colspan="4 ">
+                        <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50] "></mfBootstrapPaginator>
                     </td>
                 </tr>
             </tfoot>
         </table>
     </content>
     <!--Cuadro Conversion-->
-    <aside class="col-md-4 color-divisa">
-        <h4 class="text-center">Conversor de Divisas</h4>
-        <hr class="linea-h">
+    <aside class="col-md-4 color-divisa ">
+        <h4 class="text-center ">Conversor de Divisas</h4>
+        <hr class="linea-h ">
         <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Cantidad</label>
-                <input type="number" class="form-control" id="exampleInputNumber" aria-describedby="emailHelp" placeholder="Cantidad" [(ngModel)]="cantidad" [ngModelOptions]="{standalone:
-                    true}">
+            <div class="form-group ">
+                <label for="exampleInputEmail1 ">Cantidad</label>
+                <input type="number " class="form-control " id="exampleInputNumber " aria-describedby="emailHelp " placeholder="Cantidad " [(ngModel)]="cantidad " [ngModelOptions]="{standalone: true} ">
             </div>
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="origen">De :</label>
-                    <select name="origen" id="origen" class="form-control" [(ngModel)]="de">
-                      <option value="USD" >USD Dolarares EEUU</option>
-                      <option value="ARS">ARS Pesos Argentinos</option>
-                      <option value="BTC">BTC Bitcoin</option>
-                      <option value="EUR">EUR Euro ESP</option>
-                      <option value="JPY">JPY Yen japonés</option>
-                      <option value="BRL">BRL Brazilian Real</option>
+            <div class="form-group ">
+                <div class="form-group ">
+                    <label for="origen ">De :</label>
+                    <select name="origen " id="origen " class="form-control " [(ngModel)]="de ">
+                      <option value="USD " >USD Dolarares EEUU</option>
+                      <option value="ARS ">ARS Pesos Argentinos</option>
+                      <option value="BTC ">BTC Bitcoin</option>
+                      <option value="EUR ">EUR Euro ESP</option>
+                      <option value="JPY ">JPY Yen japonés</option>
+                      <option value="BRL ">BRL Brazilian Real</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="destino">A :</label>
-                    <select name="destino" id="destino" class="form-control" [(ngModel)]="a">
-                        <option value="USD" >USD Dolarares EEUU</option>
-                        <option value="ARS">ARS Pesos Argentinos</option>
-                        <option value="BTC">BTC Bitcoin</option>
-                        <option value="EUR">EUR Euro ESP</option>
-                        <option value="JPY">JPY Yen japonés</option>
-                        <option value="BRL">BRL Brazilian Real</option>
+            <div class="form-group ">
+                <div class="form-group ">
+                    <label for="destino ">A :</label>
+                    <select name="destino " id="destino " class="form-control " [(ngModel)]="a ">
+                        <option value="USD " >USD Dolarares EEUU</option>
+                        <option value="ARS ">ARS Pesos Argentinos</option>
+                        <option value="BTC ">BTC Bitcoin</option>
+                        <option value="EUR ">EUR Euro ESP</option>
+                        <option value="JPY ">JPY Yen japonés</option>
+                        <option value="BRL ">BRL Brazilian Real</option>
                     </select>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="" class="form-control" disabled="disabled" aria-describedby="emailHelp">{{a}} {{resultado | number:'1.2-2' }}</label>
+            <div class="form-group ">
+                <label for=" " class="form-control " disabled="disabled " aria-describedby="emailHelp ">{{a}} {{resultado | number:'1.2-2' }}</label>
             </div>
             <div class=" form-group ">
-                <button type="button " class="btn btn-warning btn-lg btn-block " (click)="realizarConvercion()">Convertir<i class="fas fa-arrow-right flecha-divisa "></i></button>
+                <button type="button " class="btn btn-warning btn-lg btn-block " (click)="realizarConvercion() ">Convertir<i class="fas fa-arrow-right flecha-divisa "></i></button>
             </div>
         </form>
     </aside>

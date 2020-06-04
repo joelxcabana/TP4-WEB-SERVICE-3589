@@ -27,31 +27,33 @@ export class SignoService {
     
     const httpOptions = {
       headers: new HttpHeaders({
-        "x-rapidapi-host": "zodiac-sign.p.rapidapi.com",
-      	"x-rapidapi-key": "5a3712cd30msh2ac57205312dfddp155d67jsn89f23d7b101e",
-     	  "useQueryString": "true"
-      })
+       "x-rapidapi-host": "zodiac-sign.p.rapidapi.com",
+	    "x-rapidapi-key": "5a3712cd30msh2ac57205312dfddp155d67jsn89f23d7b101e",
+      }),
+      params: {
+        "date":"1998-11-02"
+      }
     };
      
-     return this._http.get("https://zodiac-sign.p.rapidapi.com/sign?date=1998-11-02",httpOptions);
+     return this._http.get("https://zodiac-sign.p.rapidapi.com/sign?",httpOptions );
   }
 
 
-
-   /*
-   public getSigno(dia:string,snombre:string):Observable<any>{
+  
+   
+   public getSigno():Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
-        "x-rapidapi-host": "sameer-kumar-aztro-v1.p.rapidapi.com",
-        "x-rapidapi-key": "5a3712cd30msh2ac57205312dfddp155d67jsn89f23d7b101e"
-      })
+        'x-rapidapi-host': 'sameer-kumar-aztro-v1.p.rapidapi.com',
+        'x-rapidapi-key': '5a3712cd30msh2ac57205312dfddp155d67jsn89f23d7b101e',
+        'content-type': 'application/x-www-form-urlencoded',
+        'useQueryString': 'true'
+      }),
     };
-    //return this._http.post("https://sameer-kumar-aztro-v1.p.rapidapi.com/",{'sign':snombre , 'day':dia},httpOptions);
-     // return this._http.post( "https://sameer-kumar-aztro-v1.p.rapidapi.com/?",{"sign":"aries","day": "today"},httpOptions);
-     return this._http.post("https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=aries&day=today",httpOptions);
+     return this._http.post('https://sameer-kumar-aztro-v1.p.rapidapi.com/sign=aries&day=today',httpOptions);
   }
 
-
+/*
   public getSigno2(dia:string,snombre:string):Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
