@@ -25,6 +25,8 @@ signoAsignado:string;
   }
 
   //busca signo por una fecha pero no recibe el dato
+  //sale el mesaje message: 
+  //"Http failure during parsing for https://zodiac-sign.p.rapidapi.com/sign?date=1998-11-02"
   public buscarSigno(){
     console.log(this.fecha);
     this.signo_Service.getSignosByDate(this.fecha).subscribe( 
@@ -36,21 +38,6 @@ signoAsignado:string;
       error => { alert("Error en la petición");console.log(error) } )
       
   }
-
-
-  ///service consume otra api pero no recupera los datos
- public buscarSignoNuevo(){
-    console.log(this.fecha);
-    this.signo_Service.getSigno().subscribe( 
-      (result) => {
-          console.log(result);
-         //this.signoAsignado = result;
-        // console.log(this.signoAsignado);
-      }, 
-      error => { alert("Error en la petición");console.log(error) } )
-      
-  }
-
 
 
   public cargarSignos(){

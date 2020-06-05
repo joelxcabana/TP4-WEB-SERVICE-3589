@@ -1,7 +1,6 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Convertidor } from 'src/app/models/convertidor';
 import { ConvertidorService } from 'src/app/services/convertidor.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-divisas',
@@ -23,7 +22,8 @@ export class DivisasComponent implements OnInit {
   constructor(private convertidor_servicio:ConvertidorService) {
      this.listaConversion = new Array<Convertidor>();
      this.divisa = new Convertidor();
-     this.tablaConversion();
+      this.cargar();
+     //this.tablaConversion();
      
   }
 
@@ -40,21 +40,21 @@ export class DivisasComponent implements OnInit {
        error => { alert("Error en la petición"); } )
   }
 
-
+///ESTE METODO TIRA EL ERROR DE VARIABLE UNDEFINIDE
   public tablaConversion(){
        console.log("entro al metodo: ");
        this.cargar();
      for(var i=0; i<this.listaConversion.length;i++){
       this.convertidor_servicio.getCambio(this.listaConversion[i].fromtype,this.listaConversion[i].totype,this.listaConversion[i].fromvalue).subscribe( 
         (result) => {         
-          this.resultado=result['result'];
+          this.r=result['result'];
           console.log(this.resultado);
          }, 
          error => { alert("Error en la petición"); } )
          
-          //error sale variable indefinida dde this resultado??????????
-          console.log(this.resultado);
-          this.listaConversion[i].result = this.resultado;
+          //error sale variable indefinida de this.r
+          console.log(this.r);
+          this.listaConversion[i].result = this.r;
           console.log("FINAL"+this.listaConversion[i].result);
       }
 
@@ -68,7 +68,6 @@ export class DivisasComponent implements OnInit {
      this.divisa.totype="USD";
      this.divisa.fromvalue=1;
      this.divisa.imgto = "usa.png";
-     this.divisa.result = "dgfdgd";
     
      this.listaConversion.push(this.divisa);
 
@@ -79,22 +78,9 @@ export class DivisasComponent implements OnInit {
      this.divisa.totype="EUR";
      this.divisa.imgto = "euro.png";
      this.divisa.fromvalue= 1;
-     this.divisa.result= "dfgdfg";
     
      this.listaConversion.push(this.divisa);
 
-/*
-     this.divisa = new Convertidor();
-
-     this.divisa.fromtype="BRL";
-     this.divisa.totype="JPY";
-     this.divisa.fromvalue=1;
-    
-     this.listaConversion.push(this.divisa);
-     
-
-     this.divisa = new Convertidor();
-*/
 
   }
 
